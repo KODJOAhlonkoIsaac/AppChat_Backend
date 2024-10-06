@@ -28,5 +28,6 @@ class groupeController extends Controller
     public function show($user_id)
     {
         // $groups_id = GroupeMember::where('use'); // Je vais faire cette partie
+        // ok compris
     }
 }
