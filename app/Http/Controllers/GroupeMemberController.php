@@ -28,7 +28,7 @@ class GroupeMemberController extends Controller
             $member->save();
 
             return response()->json([
-                'message' => 'member created successfully',
+                'message' => 'old member created successfully',
                 'member' => $member,
             ], 201);
         } else {
