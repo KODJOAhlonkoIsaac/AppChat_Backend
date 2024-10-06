@@ -31,7 +31,7 @@ class GroupeMemberController extends Controller
         // return response()->json(['messages' => $request->all()]);
         $member = new GroupeMember();
         $member->groupe_id = $group_id;
-        $member->email = $groupeRequest->ùemail;
+        $member->email = $groupeRequest->email;
         $member->if_already_register = false;
         // Mail::to($request->email)->send(new accountMail($request->name));
         $member->save();
