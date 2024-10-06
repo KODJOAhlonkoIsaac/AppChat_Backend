@@ -12,5 +12,6 @@ class Groupe extends Model
     protected $fillable = [
         'name',
         'description',
+        'admin_id',
     ];
 }
