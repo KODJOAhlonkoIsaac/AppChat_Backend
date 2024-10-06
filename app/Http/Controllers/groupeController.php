@@ -30,15 +30,20 @@ class groupeController extends Controller
         $groups = [];
 
         $groups_id = GroupeMember::where('user_id', $user_id)->pluck('groupe_id');
-        
-        foreach ($groups_id as $id) {
-            array_push($groups, Groupe::find($id));
-        }
 
-        // return $groups;
+        if ($groups_id) {
+            foreach ($groups_id as $id) {
+                array_push($groups, Groupe::find($id));
+            }
+            return response()->json([
+                'message' => 'success',
+                'groupe' => $groups,
+            ], 201);
+        }
         return response()->json([
-            'message' => 'success',
-            'groupe' => $groups,
+            'message' => 'error',
+            // 'groupe' => $groups,
         ], 201);
+
     }
 }
