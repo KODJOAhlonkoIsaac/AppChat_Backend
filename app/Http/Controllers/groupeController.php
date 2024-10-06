@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\groupeRequest;
 use App\Models\Groupe;
+use App\Models\GroupeMember;
 use Illuminate\Http\Request;
 
 class groupeController extends Controller
@@ -22,5 +23,10 @@ class groupeController extends Controller
             'message' => 'groupe created successfully',
             'groupe' => $groupe,
         ], 201);
+    }
+
+    public function show($user_id)
+    {
+        // $groups_id = GroupeMember::where('use'); // Je vais faire cette partie
     }
 }

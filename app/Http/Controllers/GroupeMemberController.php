@@ -6,6 +6,7 @@ use App\Http\Requests\groupeRequest;
 use App\Http\Requests\OtherMemberRequest;
 use App\Models\GroupeMember;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class GroupeMemberController extends Controller
 {
