@@ -27,6 +27,18 @@ class groupeController extends Controller
 
     public function show($user_id)
     {
-        // $groups_id = GroupeMember::where('use'); // Je vais faire cette partie
+        $groups = [];
+
+        $groups_id = GroupeMember::where('user_id', $user_id)->pluck('groupe_id');
+        
+        foreach ($groups_id as $id) {
+            array_push($groups, Groupe::find($id));
+        }
+
+        // return $groups;
+        return response()->json([
+            'message' => 'success',
+            'groupe' => $groups,
+        ], 201);
     }
 }
