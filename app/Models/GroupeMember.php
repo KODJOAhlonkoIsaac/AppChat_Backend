@@ -5,13 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Groupe extends Model
+class GroupeMember extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'name',
-        'description',
-        'admin_id',
+        'user_id',
+        'groupe_id',
+        'email',
+        'if_already_register',
     ];
 }
