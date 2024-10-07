@@ -13,7 +13,7 @@ Route::get('/user', function (Request $request) {
 
 Route::post('register' , [AuthController::class , 'register']);
 Route::post('login' , [AuthController::class , 'login']);
-Route::post('send_file' , [FileController::class , 'store']);
+Route::post('send_file/{user_id}/{group_id}' , [FileController::class , 'store']);
 Route::post('new_groupe/{userId}' , [groupeController::class , 'create']);
 Route::post('addMember/{group_id}' , [GroupeMemberController::class , 'addMember']);
 Route::post('addOtherMember/{group_id}' , [GroupeMemberController::class , 'addOtherMember']);
