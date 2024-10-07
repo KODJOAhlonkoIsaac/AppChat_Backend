@@ -63,6 +63,5 @@ class groupeController extends Controller
             'groupe name' => $groups->name,
             'files' => $files,
         ], 201);
-
     }
 }
