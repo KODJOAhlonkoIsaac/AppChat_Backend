@@ -48,7 +48,14 @@ class groupeController extends Controller
             'message' => 'error',
             // 'groupe' => $groups,
         ], 201);
-
+    }
+    public function show_one($group_id)
+    {
+        $groups = Groupe::findOrFail($group_id);
+        return response()->json([
+            'message' => 'success',
+            'groupe' => $groups->name,
+        ], 201);
 
     }
 }

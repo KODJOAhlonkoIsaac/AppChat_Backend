@@ -18,3 +18,4 @@ Route::post('new_groupe/{userId}' , [groupeController::class , 'create']);
 Route::post('addMember/{group_id}' , [GroupeMemberController::class , 'addMember']);
 Route::post('addOtherMember/{group_id}' , [GroupeMemberController::class , 'addOtherMember']);
 Route::get('show/{user_id}' , [groupeController::class , 'show']);
+Route::get('show_one/{group_id}' , [groupeController::class , 'show_one']);
