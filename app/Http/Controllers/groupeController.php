@@ -20,6 +20,11 @@ class groupeController extends Controller
         // Mail::to($request->description)->send(new accountMail($request->name));
         $groupe->save();
 
+        $addFirstMember = new GroupeMember();
+        $addFirstMember->user_id = $userId;
+        $addFirstMember->groupe_id = $groupe->id;
+        $addFirstMember->save();
+
         return response()->json([
             'message' => 'groupe created successfully',
             'groupe' => $groupe,
@@ -46,7 +51,7 @@ class groupeController extends Controller
             // 'groupe' => $groups,
         ], 201);
     }
-    
+
     public function show_one($group_id)
     {
 
