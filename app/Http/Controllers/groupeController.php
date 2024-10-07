@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\groupeRequest;
 use App\Models\Groupe;
+use App\Models\File;
 use App\Models\GroupeMember;
 use Illuminate\Http\Request;
 
@@ -27,6 +28,7 @@ class groupeController extends Controller
 
     public function show($user_id)
     {
+
         $groups = [];
 
         $groups_id = GroupeMember::where('user_id', $user_id)->pluck('groupe_id');
@@ -47,11 +49,15 @@ class groupeController extends Controller
     }
     public function show_one($group_id)
     {
+
+        $files = File::where('group_id', $group_id)->get();
+
         $groups = Groupe::findOrFail($group_id);
 
         return response()->json([
             'message' => 'success',
-            'groupe' => $groups->name,
+            'groupe name' => $groups->name,
+            'files' => $files,
         ], 201);
     }
 }
