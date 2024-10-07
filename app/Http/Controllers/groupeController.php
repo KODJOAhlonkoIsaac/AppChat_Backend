@@ -56,6 +56,5 @@ class groupeController extends Controller
             'message' => 'success',
             'groupe' => $groups->name,
         ], 201);
-
     }
 }
