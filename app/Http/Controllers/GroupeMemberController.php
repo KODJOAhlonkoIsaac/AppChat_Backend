@@ -17,32 +17,39 @@ class GroupeMemberController extends Controller
     {
 
         $check_if_in_bd = User::where('email', $groupeRequest->email)->first();
+        $check_if_already_in_group = GroupeMember::where('email', $groupeRequest->email)->first();
 
+        if (!$check_if_already_in_group) {
+            if ($check_if_in_bd) {
+                // return response()->json(['messages' => $request->all()]);
+                $member = new GroupeMember();
+                $member->groupe_id = $group_id;
+                $member->user_id = $check_if_in_bd->id;
+                // Mail::to($request->email)->send(new accountMail($request->name));
+                $member->save();
 
-        if ($check_if_in_bd) {
-            // return response()->json(['messages' => $request->all()]);
-            $member = new GroupeMember();
-            $member->groupe_id = $group_id;
-            $member->user_id = $check_if_in_bd->id;
-            // Mail::to($request->email)->send(new accountMail($request->name));
-            $member->save();
+                return response()->json([
+                    'message' => 'old member created successfully',
+                    'member' => $member,
+                ], 201);
+            } else {
+                // return response()->json(['messages' => $request->all()]);
+                $member = new GroupeMember();
+                $member->groupe_id = $group_id;
+                $member->email = $groupeRequest->email;
+                $member->if_already_register = false;
+                // Mail::to($request->email)->send(new accountMail($request->name));
+                $member->save();
 
-            return response()->json([
-                'message' => 'old member created successfully',
-                'member' => $member,
-            ], 201);
+                return response()->json([
+                    'message' => 'member created successfully',
+                    'member' => $member,
+                ], 201);
+            }
         } else {
-            // return response()->json(['messages' => $request->all()]);
-            $member = new GroupeMember();
-            $member->groupe_id = $group_id;
-            $member->email = $groupeRequest->email;
-            $member->if_already_register = false;
-            // Mail::to($request->email)->send(new accountMail($request->name));
-            $member->save();
-
             return response()->json([
-                'message' => 'member created successfully',
-                'member' => $member,
+                'message' => 'Déjà membre',
+                // 'member' => $member,
             ], 201);
         }
     }
