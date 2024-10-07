@@ -28,13 +28,6 @@ class groupeController extends Controller
 
     public function show($user_id)
     {
-
-<<<<<<< HEAD
-=======
-        // $groups_id = GroupeMember::where('use'); // Je vais faire cette partie
-        // ok compris
-
->>>>>>> 8adaba87852b4ba2a90b69b640e02c7ab2428578
         $groups = [];
 
         $groups_id = GroupeMember::where('user_id', $user_id)->pluck('groupe_id');
@@ -53,6 +46,7 @@ class groupeController extends Controller
             // 'groupe' => $groups,
         ], 201);
     }
+    
     public function show_one($group_id)
     {
 
