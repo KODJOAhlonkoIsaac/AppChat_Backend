@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('files', function (Blueprint $table) {
             $table->id();
+
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('group_id');
+            $table->foreign('user_id')->references('id')->on('users')->nullOnDelete();
+            $table->foreign('group_id')->references('id')->on('groupes')->onDelete('cascade');
+
             $table->string('file_path');
             $table->string('file_name');
             $table->string('mime_type');
